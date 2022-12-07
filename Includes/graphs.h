@@ -6,7 +6,7 @@
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 16:11:37 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/07 17:56:00 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/07 18:32:30 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ int	handle_keypress(int keysym, t_data *data);
 int	ft_end_game(t_data *data);
 int	ft_direction(t_data *data, int mouv, int i, int j);
 int	ft_mouvement_possible(t_data *data, int mouv, int x, int y);
-int	ft_handle_items(t_data *data, int i, int j);
+int	ft_handle_items(t_data *data, int i, int j, char **map);
 
 #endif

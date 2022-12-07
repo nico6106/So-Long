@@ -6,7 +6,7 @@
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:16:59 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/07 18:00:18 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/07 18:30:09 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,11 @@ int	handle_keypress(int keysym, t_data *data)
 	return (0);
 }
 
-int	ft_handle_items(t_data *data, int i, int j)
+int	ft_handle_items(t_data *data, int i, int j, char **map)
 {
-	char	**map;
 	int		x;
 	int		y;
 
-	map = data->map.map;
 	y = data->player.y;
 	x = data->player.x;
 	if (map[y][x] == 'C')
@@ -64,6 +62,7 @@ int	ft_handle_items(t_data *data, int i, int j)
 		ft_show_element(data, &data->txt.player, j, i);
 		data->player.y = j;
 		data->player.x = i;
+		data->nb_moves = data->nb_moves - 1;
 	}
 	return (0);
 }
@@ -94,7 +93,7 @@ int	ft_direction(t_data *data, int mouv, int i, int j)
 		ft_show_element(data, &data->txt.floor, j, i);
 		ft_show_element(data, &data->txt.player, data->player.y, data->player.x);
 	}
-	if (ft_handle_items(data, i, j) == 1)
+	if (ft_handle_items(data, i, j, data->map.map) == 1)
 		ft_end_game(data);
 	return (0);
 }
