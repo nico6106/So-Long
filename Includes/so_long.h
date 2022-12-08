@@ -6,7 +6,7 @@
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 08:47:18 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/07 18:32:30 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/08 18:08:07 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ typedef struct s_map
 	char			**map;
 }	t_map;
 
-# include "graphs.h"
-
 //load_map.c
 char	**ft_return_map(int argc, char **argv);
 int		ft_check_argv(int argc, char **argv);
@@ -62,7 +60,7 @@ int		ft_check_is_rectangle(char **map);
 int		ft_check_walls(char **map);
 
 //verif_map_valid_path.c
-int		ft_verif_map_is_valid(char **map);
+int		ft_verif_map_is_valid(char **map, int option);
 t_map	ft_algo(t_map tp, t_coord start);
 t_coord	ft_return_next_coord(char **map, t_coord start, int dir);
 t_coord	ft_extract_coord(char **map, char c);

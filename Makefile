@@ -6,11 +6,26 @@
 #    By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 08:32:06 by nlesage           #+#    #+#              #
-#    Updated: 2022/12/07 18:27:02 by nlesage          ###   ########.fr        #
+#    Updated: 2022/12/08 17:52:08 by nlesage          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS 		= main.c load_map.c verif_map.c ft_free_element.c verif_map_valid_path.c lists.c handle_struct_map.c init_map.c update_map.c
+SRCS 		= main.c \
+				load_map.c \
+				verif_map.c \
+				ft_free_element.c \
+				verif_map_valid_path.c \
+				lists.c \
+				handle_struct_map.c \
+				init_screen.c \
+				update_screen.c \
+				bonus_screen.c \
+				end_game.c \
+				init_variables.c \
+				ennemy.c  \
+				ennemy_move.c \
+				player_move.c
+
 
 NAME		= so_long
 

@@ -6,13 +6,13 @@
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 16:20:03 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/07 16:19:50 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/08 17:15:04 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_verif_map_is_valid(char **map)
+int	ft_verif_map_is_valid(char **map, int option)
 {
 	char	**copy;
 	t_coord	start;
@@ -28,7 +28,8 @@ int	ft_verif_map_is_valid(char **map)
 	ft_clear_map(map_cp.map);
 	if (map_cp.nb_items != (ft_count_items(map) + 2))
 	{
-		ft_putstr_fd("Error\nYour map is not possible.\n", 2);
+		if (option == 1)
+			ft_putstr_fd("Error\nYour map is not possible.\n", 2);
 		return (1);
 	}
 	return (0);
@@ -104,8 +105,8 @@ t_coord	ft_extract_coord(char **map, char c)
 		{
 			if (map[i][j] == c)
 			{
-				coord.x = j; //i;
-				coord.y = i; //j;
+				coord.x = j;
+				coord.y = i;
 				coord.c = c;
 				return (coord);
 			}

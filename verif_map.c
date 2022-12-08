@@ -6,7 +6,7 @@
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 08:47:04 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/03 18:12:33 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/08 18:09:20 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_check_map(char **map)
 	error = error + ft_check_is_rectangle(map);
 	if (error != 0)
 		return (0);
-	error = error + ft_verif_map_is_valid(map);
+	error = error + ft_verif_map_is_valid(map, 1);
 	if (error != 0)
 		return (0);
 	return (1);
