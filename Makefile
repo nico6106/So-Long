@@ -6,7 +6,7 @@
 #    By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 08:32:06 by nlesage           #+#    #+#              #
-#    Updated: 2022/12/09 12:05:19 by nlesage          ###   ########.fr        #
+#    Updated: 2022/12/09 14:45:04 by nlesage          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,8 @@ SRCS_BONUS	= main.c \
 
 NAME		= so_long
 
+NAME_B		= so_long_bonus
+
 LIBFT_DIR	= Libft/
 
 LIBFT		= libft.a
@@ -62,7 +64,13 @@ ${NAME}:	${OBJS}
 			make -C ${LIBFT_DIR}
 			gcc ${FLAGS} -I ${HEADERS} -I./mlx_linux/ -o ${NAME} ${OBJS} -L${LIBFT_DIR} -lft ${FLAGS_XML}
 
+${NAME_B}:	${OBJS_BONUS}
+			make -C ${LIBFT_DIR}
+			gcc ${FLAGS} -I ${HEADERS} -I./mlx_linux/ -o ${NAME_B} ${OBJS_BONUS} -L${LIBFT_DIR} -lft ${FLAGS_XML}
+
 all:		${NAME}
+
+bonus:		${NAME_B}
 
 clean_lib:	
 			make clean -C ${LIBFT_DIR}
@@ -74,12 +82,8 @@ clean:		clean_lib
 			rm -f ${OBJS} ${OBJS_BONUS}
 
 fclean:		clean fclean_lib
-			rm -f ${NAME}
+			rm -f ${NAME} ${NAME_B}
 
 re:			fclean all
-
-bonus:		${OBJS_BONUS}
-			make -C ${LIBFT_DIR}
-			gcc ${FLAGS} -I ${HEADERS} -I./mlx_linux/ -o ${NAME} ${OBJS_BONUS} -L${LIBFT_DIR} -lft ${FLAGS_XML}
 
 .PHONY:		clean, fclean, re, bonus, add, clean_lib, fclean_lib

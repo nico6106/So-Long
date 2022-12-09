@@ -6,7 +6,7 @@
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 08:23:34 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/09 12:54:21 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/09 15:30:19 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,16 @@ char	**ft_return_map(int argc, char **argv)
 {
 	t_list	*lst;
 	char	**map;
+	int		error;
 
-	if (ft_check_argv(argc, argv) == 0)
+	error = ft_check_argv(argc, argv);
+	if (error == 0)
 	{
 		ft_putstr_fd("Error\nYou need a .ber format.\n", 2);
 		return (NULL);
 	}
+	else if (error == 2)
+		return (NULL);
 	lst = ft_extract_map(argv[1]);
 	if (!lst)
 		return (NULL);
@@ -103,7 +107,7 @@ t_list	*ft_extract_map(char *map_name)
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_putstr_fd("Error\nYour there is no map with this pathname.\n", 2);
+		ft_putstr_fd("Error\nThere is no map with this pathname.\n", 2);
 		return (NULL);
 	}
 	row = get_next_line(fd);
@@ -127,7 +131,10 @@ int	ft_check_argv(int argc, char **argv)
 
 	len = 0;
 	if (argc != 2)
-		return (0);
+	{
+		ft_putstr_fd("Error\nThe number of argument(s) is incorrect.\n", 2);
+		return (2);
+	}
 	while (argv[1][len])
 	{
 		len++;

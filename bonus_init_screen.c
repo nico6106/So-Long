@@ -6,7 +6,7 @@
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:15:45 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/09 12:23:41 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/09 15:26:45 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ int	ft_play(t_map map)
 
 	data.mlx = mlx_init();
 	if (data.mlx == NULL)
+	{
+		ft_putstr_fd("Error\nCould not load the environment\n", 2);
 		return (MLX_ERROR);
-	ft_init_ptrs(&data);
-	data.map = map;
-	data.player = ft_extract_coord(data.map.map, 'P');
-	data.win_h = SIZE_IMG * (data.map.nb_row + 1);
-	data.win_w = SIZE_IMG * data.map.nb_column;
+	}
+	ft_init_ptrs(&data, map);
 	data.win = mlx_new_window(data.mlx, data.win_w, data.win_h, "So Long!");
 	if (data.win == NULL)
 	{

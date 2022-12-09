@@ -6,7 +6,7 @@
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 08:47:18 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/09 10:50:20 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/09 15:14:02 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ char	**ft_assemble_map(t_list *lst);
 int		ft_check_map(char **map);
 int		ft_check_items(char **map, int i_start, int i_end, int i_tocollect);
 int		ft_check_wall(char *row, int option);
-int		ft_check_is_rectangle(char **map);
 int		ft_check_walls(char **map);
+int		ft_check_element_map(char **map);
 
 //verif_map_valid_path.c
 int		ft_verif_map_is_valid(char **map, int option);

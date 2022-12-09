@@ -6,7 +6,7 @@
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 16:11:37 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/09 12:24:12 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/09 15:26:18 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int		ft_end_game(t_data *data);
 void	ft_end_images(t_data *data);
 
 //init_variables.c
-int		ft_init_ptrs(t_data *data);
+int		ft_init_ptrs(t_data *data, t_map map);
 int		ft_init_ptrs_img(t_img *img);
 
 //ennemy.c
