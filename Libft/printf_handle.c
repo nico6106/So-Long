@@ -6,7 +6,7 @@
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 14:47:37 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/02 14:51:15 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/01 14:28:40 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	ft_handle_string(t_list_p **lst, char *arg)
 		i = -1;
 		while (arg[++i])
 			data[i] = arg[i];
-		data[i] = '\0';
 	}
 	(*lst)->content = data;
 	(*lst)->type = 1;

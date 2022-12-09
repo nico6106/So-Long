@@ -6,7 +6,7 @@
 #    By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 08:32:06 by nlesage           #+#    #+#              #
-#    Updated: 2022/12/08 17:52:08 by nlesage          ###   ########.fr        #
+#    Updated: 2022/12/09 12:05:19 by nlesage          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,13 +19,25 @@ SRCS 		= main.c \
 				handle_struct_map.c \
 				init_screen.c \
 				update_screen.c \
-				bonus_screen.c \
 				end_game.c \
 				init_variables.c \
-				ennemy.c  \
-				ennemy_move.c \
 				player_move.c
 
+SRCS_BONUS	= main.c \
+				load_map.c \
+				verif_map.c \
+				ft_free_element.c \
+				verif_map_valid_path.c \
+				lists.c \
+				handle_struct_map.c \
+				bonus_ennemy_move.c \
+				bonus_ennemy.c \
+				bonus_end_game.c \
+				bonus_init_screen.c \
+				bonus_init_variables.c \
+				bonus_player_move.c \
+				bonus_screen.c \
+				bonus_update_screen.c
 
 NAME		= so_long
 
@@ -40,6 +52,8 @@ FLAGS		= -Wall -Wextra -Werror
 FLAGS_XML	= -L./mlx_linux -lmlx -lXext -lX11
 
 OBJS		= ${SRCS:.c=.o}
+
+OBJS_BONUS	= ${SRCS_BONUS:.c=.o}
 
 .c.o:
 			gcc ${FLAGS} -I ${HEADERS} -I./mlx_linux/ -c $< -o ${<:.c=.o}
@@ -64,6 +78,8 @@ fclean:		clean fclean_lib
 
 re:			fclean all
 
-bonus:		all
+bonus:		${OBJS_BONUS}
+			make -C ${LIBFT_DIR}
+			gcc ${FLAGS} -I ${HEADERS} -I./mlx_linux/ -o ${NAME} ${OBJS_BONUS} -L${LIBFT_DIR} -lft ${FLAGS_XML}
 
 .PHONY:		clean, fclean, re, bonus, add, clean_lib, fclean_lib

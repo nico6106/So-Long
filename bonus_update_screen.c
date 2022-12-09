@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_screen.c                                    :+:      :+:    :+:   */
+/*   bonus_update_screen.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:16:59 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/09 12:18:00 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/09 12:20:49 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "graphs.h"
+#include "bonus_graphs.h"
 
 int	ft_render(t_data *data)
 {
 	if (data->win == NULL)
 		return (1);
+	ft_make_birds_moves(data, clock());
+	if (data->ennemy.prev != 0)
+		ft_make_ennemy_moves(data, clock() % 4 + 1, data->ennemy.position.x,
+			data->ennemy.position.y);
+	if (data->ennemy.position.y == data->player.y
+		&& data->ennemy.position.x == data->player.x)
+	{
+		ft_printf("You lost to your ennemy. Try again!\n");
+		ft_end_game(data);
+	}
 	return (0);
 }
 
@@ -33,7 +43,7 @@ int	handle_keypress(int keysym, t_data *data)
 	if (ft_h_items(data, x, y, data->map.map) == 1)
 		ft_end_game(data);
 	if (prev_nb_moves != data->nb_moves)
-		ft_printf("%d moves\n", data->nb_moves);
+		ft_show_nb_moves_screen(data, data->nb_moves);
 	return (0);
 }
 
@@ -52,6 +62,8 @@ int	ft_call_direction_on_keypress(int keysym, t_data *data)
 		ft_direction(data, 3, data->player.x, data->player.y);
 	if (keysym == 100 || keysym == 65363)
 		ft_direction(data, 4, data->player.x, data->player.y);
+	if (keysym == 107)
+		ft_kill_ennemy(data);
 	return (0);
 }
 

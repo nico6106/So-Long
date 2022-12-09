@@ -6,7 +6,7 @@
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 08:23:34 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/07 13:55:02 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/09 12:54:21 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ char	**ft_return_map(int argc, char **argv)
 	char	**map;
 
 	if (ft_check_argv(argc, argv) == 0)
+	{
+		ft_putstr_fd("Error\nYou need a .ber format.\n", 2);
 		return (NULL);
+	}
 	lst = ft_extract_map(argv[1]);
 	if (!lst)
 		return (NULL);
@@ -81,7 +84,10 @@ int	ft_verif_nb_char_per_row(t_list *lst)
 		if (str[len - 1] == '\n')
 			len--;
 		if (len != nb_column)
+		{
+			ft_putstr_fd("Error\nThe map is not a rectangle.\n", 2);
 			return (0);
+		}
 		lst = lst->next;
 	}
 	return ((int) nb_column);
@@ -95,6 +101,11 @@ t_list	*ft_extract_map(char *map_name)
 
 	lst = NULL;
 	fd = open(map_name, O_RDONLY);
+	if (fd == -1)
+	{
+		ft_putstr_fd("Error\nYour there is no map with this pathname.\n", 2);
+		return (NULL);
+	}
 	row = get_next_line(fd);
 	while (row)
 	{

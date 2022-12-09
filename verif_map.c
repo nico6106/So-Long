@@ -6,7 +6,7 @@
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 08:47:04 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/08 18:09:20 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/09 12:50:57 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@ int	ft_check_map(char **map)
 	int	error;
 
 	error = 0;
-	error = error + ft_check_items(map, 0, 0, 0);
 	error = error + ft_check_walls(map);
+	if (error != 0)
+		return (0);
 	error = error + ft_check_is_rectangle(map);
+	if (error != 0)
+		return (0);
+	error = error + ft_check_items(map, 0, 0, 0);
 	if (error != 0)
 		return (0);
 	error = error + ft_verif_map_is_valid(map, 1);
@@ -77,14 +81,13 @@ int	ft_check_wall(char *row, int option)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	if (option == 1)
 	{
-		while (row[i])
+		while (row[++i])
 		{
 			if (row[i] != '1')
 				return (1);
-			i++;
 		}
 		return (0);
 	}
@@ -99,13 +102,20 @@ int	ft_check_wall(char *row, int option)
 
 int	ft_check_is_rectangle(char **map)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = ft_strlen(map[0]);
 	while (map[i])
+	{
+		if (ft_strlen(map[i]) != j)
+		{
+			ft_putstr_fd("Error\nThis map is not a rectangle!\n", 2);
+			return (1);
+		}
 		i++;
+	}
 	if (i == j)
 	{
 		ft_putstr_fd("Error\nThis map is not a rectangle !\n", 2);

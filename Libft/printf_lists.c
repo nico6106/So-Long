@@ -6,7 +6,7 @@
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 09:18:30 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/01 14:30:11 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/09 11:19:30 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ char	*ft_return_data_from_text(char *text)
 	while (text[i])
 		i++;
 	data = malloc((i + 1) * sizeof(char));
-	data[i] = '\0';
 	if (!data)
 		return (NULL);
+	data[i] = '\0';
 	i = 0;
 	while (text[i])
 	{

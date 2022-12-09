@@ -6,7 +6,7 @@
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 13:19:06 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/02 08:59:12 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/09 11:19:06 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ char	*ft_return_nb_base(char *base, unsigned long int nb, int position)
 	if (nb < 16)
 	{
 		data = malloc((position + 1 + 1) * sizeof(char));
+		if (!data)
+			return (NULL);
 		data[position + 1] = '\0';
 	}
 	if (!data)
@@ -132,6 +134,8 @@ char	*ft_return_nb_base_int(char *base, unsigned int nb, int position)
 	if (nb < 16)
 	{
 		data = malloc((position + 1 + 1) * sizeof(char));
+		if (!data)
+			return (NULL);
 		data[position + 1] = '\0';
 	}
 	if (!data)

@@ -6,7 +6,7 @@
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 08:22:03 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/08 18:09:38 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/09 11:33:14 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,4 @@ int	main(int argc, char **argv)
 	ft_play(struct_map);
 	ft_clear_map(struct_map.map);
 	return (0);
-}
-
-void	ft_show_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	ft_printf("Map x\n");
-	while (map[i])
-	{
-		ft_printf("row[%d]=%s\n", i, map[i]);
-		i++;
-	}
-	ft_printf("\n");
 }

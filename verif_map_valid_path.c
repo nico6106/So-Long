@@ -6,7 +6,7 @@
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 16:20:03 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/08 17:15:04 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/09 10:50:37 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,26 @@ t_map	ft_algo(t_map tp, t_coord start)
 {
 	t_coord	next;
 
-	if (tp.map[start.x][start.y] == 'C' || tp.map[start.x][start.y] == 'P')
+	if (tp.map[start.y][start.x] == 'E')
+	{
 		tp.nb_items++;
-	if (tp.map[start.x][start.y] == 'E')
+		tp.map[start.y][start.x] = '5';
+		return (tp);
+	}
+	if (tp.map[start.y][start.x] == 'P' || tp.map[start.y][start.x] == 'C')
 		tp.nb_items++;
-	tp.map[start.x][start.y] = '5';
+	tp.map[start.y][start.x] = '5';
 	next = ft_return_next_coord(tp.map, start, 1);
-	if (tp.map[next.x][next.y] != '5')
+	if (ft_is_in_charset(tp.map[next.y][next.x], "5") == 0)
 		tp = ft_algo(tp, next);
 	next = ft_return_next_coord(tp.map, start, 2);
-	if (tp.map[next.x][next.y] != '5')
+	if (ft_is_in_charset(tp.map[next.y][next.x], "5") == 0)
 		tp = ft_algo(tp, next);
 	next = ft_return_next_coord(tp.map, start, 3);
-	if (tp.map[next.x][next.y] != '5')
+	if (ft_is_in_charset(tp.map[next.y][next.x], "5") == 0)
 		tp = ft_algo(tp, next);
 	next = ft_return_next_coord(tp.map, start, 4);
-	if (tp.map[next.x][next.y] != '5')
+	if (ft_is_in_charset(tp.map[next.y][next.x], "5") == 0)
 		tp = ft_algo(tp, next);
 	return (tp);
 }
@@ -65,25 +69,25 @@ t_coord	ft_return_next_coord(char **map, t_coord start, int dir)
 
 	next.x = -1;
 	next.y = -1;
-	if (dir == 1 && start.x > 0)
+	if (dir == 1 && start.y > 0)
 	{
-		next.x = start.x - 1;
-		next.y = start.y;
-	}
-	else if (dir == 2 && start.y > 0)
-	{
-		next.x = start.x;
 		next.y = start.y - 1;
-	}
-	else if (dir == 3 && start.y < ((int) ft_strlen(map[0]) - 1))
-	{
 		next.x = start.x;
-		next.y = start.y + 1;
 	}
-	else if (dir == 4 && start.x < (ft_count_nb_row_in_tab(map) - 1))
+	else if (dir == 2 && start.x > 0)
 	{
-		next.x = start.x + 1;
 		next.y = start.y;
+		next.x = start.x - 1;
+	}
+	else if (dir == 3 && start.x < ((int) ft_strlen(map[0]) - 1))
+	{
+		next.y = start.y;
+		next.x = start.x + 1;
+	}
+	if (dir == 4 && start.y < (ft_count_nb_row_in_tab(map) - 1))
+	{
+		next.y = start.y + 1;
+		next.x = start.x;
 	}
 	return (next);
 }

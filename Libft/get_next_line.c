@@ -6,7 +6,7 @@
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 16:53:04 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/02 14:56:29 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/09 11:20:11 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*get_next_line(int fd)
 {
-	char		*row;
-	t_list		*chaine;
-	int			nb_char;
+	char	*row;
+	t_list	*chaine;
+	int		nb_char;
 
 	if (BUFFER_SIZE <= 0)
 		return (NULL);

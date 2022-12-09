@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_move.c                                      :+:      :+:    :+:   */
+/*   bonus_player_move.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 17:49:53 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/09 12:10:23 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/09 12:02:07 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "graphs.h"
+#include "bonus_graphs.h"
 
 int	ft_direction(t_data *data, int mouv, int i, int j)
 {
@@ -46,22 +46,22 @@ int	ft_mouvement_possible(t_data *data, int mouv, int x, int y)
 {
 	y = data->player.y;
 	x = data->player.x;
-	if (ft_is_in_charset(data->map.map[y - 1][x], "0EC") && mouv == 1)
+	if (ft_is_in_charset(data->map.map[y - 1][x], "0EMC") && mouv == 1)
 	{
 		data->player.y = y - 1;
 		return (1);
 	}
-	else if (ft_is_in_charset(data->map.map[y + 1][x], "0EC") && mouv == 2)
+	else if (ft_is_in_charset(data->map.map[y + 1][x], "0EMC") && mouv == 2)
 	{
 		data->player.y = y + 1;
 		return (1);
 	}
-	else if (ft_is_in_charset(data->map.map[y][x - 1], "0EC") && mouv == 3)
+	else if (ft_is_in_charset(data->map.map[y][x - 1], "0EMC") && mouv == 3)
 	{
 		data->player.x = x - 1;
 		return (1);
 	}
-	else if (ft_is_in_charset(data->map.map[y][x + 1], "0EC") && mouv == 4)
+	else if (ft_is_in_charset(data->map.map[y][x + 1], "0EMC") && mouv == 4)
 	{
 		data->player.x = x + 1;
 		return (1);

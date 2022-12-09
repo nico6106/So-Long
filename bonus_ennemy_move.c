@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ennemy_move.c                                      :+:      :+:    :+:   */
+/*   bonus_ennemy_move.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 16:40:55 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/08 18:08:34 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/09 12:01:56 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "graphs.h"
+#include "bonus_graphs.h"
 
 void	ft_make_ennemy_moves(t_data *data, int dir, int x, int y)
 {

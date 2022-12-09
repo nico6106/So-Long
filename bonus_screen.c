@@ -6,12 +6,12 @@
 /*   By: nlesage <nlesage@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 08:33:23 by nlesage           #+#    #+#             */
-/*   Updated: 2022/12/08 18:08:25 by nlesage          ###   ########.fr       */
+/*   Updated: 2022/12/09 12:02:09 by nlesage          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "graphs.h"
+#include "bonus_graphs.h"
 
 int	ft_show_nb_moves_screen(t_data *data, int nb_moves)
 {
@@ -31,7 +31,7 @@ int	ft_show_nb_moves_screen(t_data *data, int nb_moves)
 	ft_render_rect(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->txt.rect.img,
 		0, data->win_h - SIZE_IMG);
-	mlx_string_put(data->mlx, data->win, data->win_w / 2,
+	mlx_string_put(data->mlx, data->win, data->win_w / 2 - SIZE_IMG,
 		data->win_h - SIZE_IMG / 2, RED, str);
 	free(str_moves);
 	free(str_sentence);
@@ -87,9 +87,7 @@ void	ft_make_birds_moves(t_data *data, clock_t time_now)
 					ft_show_element(data, &data->txt.collect1, j, i);
 			}
 		}
-		data->sprite.prev = data->sprite.prev + 1;
-		if (data->sprite.prev > 3)
-			data->sprite.prev = 1;
+		data->sprite.prev = (data->sprite.prev + 1) % 4;
 		data->sprite.time_prev = time_now;
 	}
 }
